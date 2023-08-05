@@ -32,7 +32,7 @@ const CreatePost = () => {
     return nsfwWords.some((word) => lowerCasePrompt.includes(word));
   }
 
-  function generateImage(userPrompt) {
+  function checkPrompt(userPrompt) {
     if (containsNSFWWords(userPrompt)) {
       // Handle restricted access here, e.g., show a warning or block image generation.
       alert("Restricted access: NSFW words detected in the prompt.");
@@ -43,7 +43,7 @@ const CreatePost = () => {
   const generateImage = async () => {
     if (form.prompt) {
       try {
-        generateImage(form.prompt)
+        checkPrompt(form.prompt)
         setGeneratingImg(true);
         const response = await fetch(
           "https://dreamartify.onrender.com/api/v1/dalle",
