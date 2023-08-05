@@ -25,19 +25,38 @@ const CreatePost = () => {
     setForm({ ...form, prompt: randomPrompt });
   };
 
+  const nsfwWords = ["sex", "naked", "butt"]; // Add your list of NSFW words here
+
+  function containsNSFWWords(prompt) {
+    const lowerCasePrompt = prompt.toLowerCase();
+    return nsfwWords.some((word) => lowerCasePrompt.includes(word));
+  }
+
+  function generateImage(userPrompt) {
+    if (containsNSFWWords(userPrompt)) {
+      // Handle restricted access here, e.g., show a warning or block image generation.
+      alert("Restricted access: NSFW words detected in the prompt.");
+      return;
+    } 
+  }
+
   const generateImage = async () => {
     if (form.prompt) {
       try {
+        generateImage(form.prompt)
         setGeneratingImg(true);
-        const response = await fetch('https://dreamartify.onrender.com/api/v1/dalle', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({
-            prompt: form.prompt,
-          }),
-        });
+        const response = await fetch(
+          "https://dreamartify.onrender.com/api/v1/dalle",
+          {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+              prompt: form.prompt,
+            }),
+          }
+        );
 
         const data = await response.json();
         //alert(data.photo)
@@ -48,7 +67,7 @@ const CreatePost = () => {
         setGeneratingImg(false);
       }
     } else {
-      alert('Please provide proper prompt');
+      alert("Please provide proper prompt");
     }
   };
 
@@ -56,30 +75,33 @@ const CreatePost = () => {
     e.preventDefault();
 
     if (form.prompt && form.photo) {
-    //  alert(form.photo)
+      //  alert(form.photo)
       console.log(form);
       setLoading(true);
       try {
-        const response = await fetch('https://dreamartify.onrender.com/api/v1/post', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({ ...form }),
-        });
+        const response = await fetch(
+          "https://dreamartify.onrender.com/api/v1/post",
+          {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({ ...form }),
+          }
+        );
 
         const da = await response.json();
         console.log(da);
-        alert('Success');
-        
-        navigate('/');
+        alert("Success");
+
+        navigate("/");
       } catch (err) {
         alert(err);
       } finally {
         setLoading(false);
       }
     } else {
-      alert('Please generate an image with proper details');
+      alert("Please generate an image with proper details");
     }
   };
 
@@ -88,8 +110,8 @@ const CreatePost = () => {
       <div>
         <h1 className="font-extrabold text-[#222328] text-[32px]">Create</h1>
         <p className="mt-2 text-[#666e75] text-[14px] max-w-[500px]">
-          Generate an imaginative image through DreamArtify AI and share it with the
-          community
+          Generate an imaginative image through DreamArtify AI and share it with
+          the community
         </p>
       </div>
 
