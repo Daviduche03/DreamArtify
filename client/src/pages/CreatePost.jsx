@@ -25,7 +25,16 @@ const CreatePost = () => {
     setForm({ ...form, prompt: randomPrompt });
   };
 
-  const nsfwWords = ["sex", "naked", "butt"]; // Add your list of NSFW words here
+  const nsfwWords = [
+    "sex", "naked", "butt", "Pornography", "Adult content",
+  "Erotic", "Explicit", "Nudity", "Sexual", "XXX", "Vulgar", "Fetish", "Kinky",
+  "Obscene", "Prostitute", "BDSM", "Swingers", "Masturbation", "Blowjob",
+  "lesbians", "homosexual", "Intercourse", "Orgasm",  "Condom", "Dildo",
+  "Vibrator", "Butt", "Penis", "Vagina", "Breast", "Anal",
+  "Cum", "Ejaculation", "Sperm", "Lingerie", "Pant", "Panties",
+  "Bikini", "Underwear", "Pantyhose", "Orgasm"
+  
+  ]; // Add your list of NSFW words here
 
   function containsNSFWWords(prompt) {
     const lowerCasePrompt = prompt.toLowerCase();
