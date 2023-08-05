@@ -42,7 +42,11 @@ const CreatePost = () => {
 
   const generateImage = async () => {
     if (form.prompt) {
-      checkPrompt(form.prompt)
+      if (containsNSFWWords(form.prompt)) {
+      // Handle restricted access here, e.g., show a warning or block image generation.
+      alert("Restricted access: NSFW words detected in the prompt.");
+      return;
+    } 
       try {
         setGeneratingImg(true);
         const response = await fetch(
