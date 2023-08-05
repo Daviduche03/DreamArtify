@@ -32,13 +32,6 @@ const CreatePost = () => {
     return nsfwWords.some((word) => lowerCasePrompt.includes(word));
   }
 
-  function checkPrompt(userPrompt) {
-    if (containsNSFWWords(userPrompt)) {
-      // Handle restricted access here, e.g., show a warning or block image generation.
-      alert("Restricted access: NSFW words detected in the prompt.");
-      return;
-    } 
-  }
 
   const generateImage = async () => {
     if (form.prompt) {
@@ -66,7 +59,7 @@ const CreatePost = () => {
         //alert(data.photo)
         setForm({ ...form, photo: data.photo });
       } catch (err) {
-        alert(err);
+        alert(err.message);
       } finally {
         setGeneratingImg(false);
       }
