@@ -15,8 +15,8 @@ export async function downloadImage(_id, photo) {
     // Fetch the image data as a Blob
     const response = await fetch(photo);
     const imageBlob = await response.blob();
-    alert(photo);
-    alert(imageBlob);
+    console.log(photo);
+    console.log(imageBlob);
     // Save the Blob as a file using FileSaver
     FileSaver.saveAs(imageBlob, `download-${_id}.jpg`);
   } catch (error) {
