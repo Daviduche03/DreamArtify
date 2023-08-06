@@ -34,6 +34,7 @@ const Home = () => {
       if (response.ok) {
         const result = await response.json();
         setAllPosts(result.data.reverse());
+        console.log(allPosts);
       }
     } catch (err) {
       alert(err);
