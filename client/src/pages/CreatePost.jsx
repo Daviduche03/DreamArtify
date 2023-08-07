@@ -32,7 +32,7 @@ const CreatePost = () => {
   "lesbians", "homosexual", "Intercourse", "Orgasm",  "Condom", "Dildo",
   "Vibrator", "Butt", "Penis", "Vagina", "Breast", "Anal",
   "Cum", "Ejaculation", "Sperm", "Lingerie", "Pant", "Panties",
-  "Bikini", "Underwear", "Pantyhose", "Orgasm"
+  "Bikini", "Underwear", "Pantyhose", "Orgasm","nipples", 'nipple'
   
   ]; // Add your list of NSFW words here
 
