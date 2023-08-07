@@ -49,7 +49,7 @@ router.route("/").post(async (req, res) => {
         sampler: "DPM++ 2M Karras",
         model: "Realistic_Vision_V5.0.safetensors [614d1063]",
         prompt: prompt,
-        negative_prompt: "badly drawn",
+        negative_prompt: "badly drawn, nude, porn, naked, lesbians, homosexual, nakedness",
         steps: 25,
         cfg_scale: 7,
         seed: -1,
