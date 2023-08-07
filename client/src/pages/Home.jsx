@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 
 import { Card, FormField, Loader } from "../components";
 
@@ -24,12 +25,15 @@ const Home = () => {
     setLoading(true);
 
     try {
-      const response = await fetch("https://dreamartify.onrender.com/api/v1/post", {
-        method: "GET",
-        headers: {
-          "Content-Type": "application/json",
-        },
-      });
+      const response = await fetch(
+        "https://dreamartify.onrender.com/api/v1/post",
+        {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
 
       if (response.ok) {
         const result = await response.json();
@@ -74,6 +78,13 @@ const Home = () => {
           artistic genius. Transform ideas into visual wonders effortlessly.
           Embrace boundless creativity now!
         </p>
+        <Link
+          to="/create-post"
+          className="font-inter font-medium
+              bg-[#6469ff] text-white px-4 py-4 rounded-md"
+        >
+          Create
+        </Link>
       </div>
 
       <div className="mt-16">
