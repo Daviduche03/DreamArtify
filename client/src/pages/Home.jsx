@@ -81,7 +81,7 @@ const Home = () => {
         <Link
           to="/create-post"
           className="font-inter font-medium
-              bg-[#6469ff] text-white px-4 py-4 rounded-md"
+              bg-[#6469ff] text-white px-4 py-2 rounded-md mt-4 w-14"
         >
           Create
         </Link>
